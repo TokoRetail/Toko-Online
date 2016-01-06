@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>www.syamadav.com|Menampilkan Data dari Database Menggunakan CodeIgniter</title>
+    </head>
+    <!--author : www.syamadav.com-->
+    <body>
+        <h1>Tabel karyawan</h1>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nama</th>
+                    <th>Alamat</th>
+                    <th>NO. Telepon</th>
+                    <th>Email</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Agama</th>
+                    <th>Tempat/Tanggal Lahir</th>
+                </tr>
+            </thead>
+
+            <?php
+            foreach ($k as $karyawan) {
+                echo "<tr>";
+                print "<td>";
+                echo $karyawan->idkaryawan;
+                print "<td>";
+                print $karyawan->nama;
+                print "<td>";
+                print $karyawan->alamat;
+                print "<td>";
+                print $karyawan->notelp;
+                print "<td>";
+                print $karyawan->email;
+                print "<td>";
+                print $karyawan->jnskelamin;
+                print "<td>";
+                print $karyawan->agama;
+                print "<td>";
+                print $karyawan->tmplahir . "/" . $karyawan->tgllahir;
+                print "<td>";
+            }
+            ?>
+        </tbody>
+    </table>
+</body>
+</html>
