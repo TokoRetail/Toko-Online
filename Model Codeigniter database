@@ -1,0 +1,11 @@
+<?php
+//author: www.syamadav.com
+class M_karyawan extends CI_Model {
+
+    function simpan() {
+        $this->load->database();
+        $query = $this->db->get('Karyawan');
+        return $query->result();
+    }
+}
+?>
