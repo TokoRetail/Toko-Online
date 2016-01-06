@@ -1,0 +1,13 @@
+<?php
+//author: www.syamadav.com
+class Karyawan extends CI_Controller {
+
+    public function index() {
+        $this->load->model('M_karyawan');
+        $Karyawan = $this->M_karyawan->simpan();
+        $this->load->vars('k', $Karyawan);
+        $this->load->view('v_karyawan');
+    }
+
+}
+?>
