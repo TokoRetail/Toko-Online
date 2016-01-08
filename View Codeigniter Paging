@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>CARIKODE</title>
+</head>
+<body>
+ 
+	<?php 
+	echo heading('TUTORIAL PAGING CODEIGNITER | CARIKODE.COM',1);
+ 
+	echo $this->pagination->create_links();
+	
+	$this->table->set_heading(array('id', 'Artikel'));
+ 
+	foreach($artikel as $a){	
+		$this->table->add_row(array($a->id, $a->artikel,));
+	}
+	
+	echo $this->table->generate(); 
+ 
+	?>
+ 
+</body>
+</html>
