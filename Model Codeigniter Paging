@@ -1,0 +1,15 @@
+<?php
+ 
+class M_artikel extends CI_Model{
+ 
+	function lihat($sampai,$dari){
+		return $query = $this->db->get('artikel',$sampai,$dari)->result();
+		
+	}
+ 
+	function jumlah(){
+		return $this->db->get('artikel')->num_rows();
+	}
+}
+
+?>
