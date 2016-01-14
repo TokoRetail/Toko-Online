@@ -1,0 +1,54 @@
+<!DOCType html>
+<html>
+      <head>
+            <title>Admin Page| View All Product </title>
+            <!-- load JQuery, Bootstrap, Datatables -->
+            <!-- URL: http://pastebin.com/index/WeaY5FrA -->
+            <script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+	    <script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+	    <script type="text/javascript" language="javascript" src="//cdn.datatables.net/plug-ins/9dcbecd42ad/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+	
+	    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+	    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/plug-ins/9dcbecd42ad/integration/bootstrap/3/dataTables.bootstrap.css">
+      
+      </head>
+      <body>
+      
+      <div class="row">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-10">
+          <h1>Product Table</h1>
+             <table id="myTable" class="table table-striped table-bordered table-hover">
+                <thead>
+                      <tr>
+                          <th>No</th>
+                          <th>Nama_Barang</th>
+                          <th>Merk</th>
+                          <th>Harga</th>
+                     </tr>
+               </thead>
+               <tbody>
+                     <?php foreach ($products as $a) : ?>
+                     <tr>
+                         <td><?php echo $a->No ?></td>
+                         <td><?php echo $a->Nama_Barang ?></td>
+                         <td><?php echo $a->Merk ?></td>
+                         <td><?php echo $a->Harga ?></td>
+                     </tr>
+                    <?php endforeach; ?>
+              </tbody>
+         </table>
+          </div>
+          <div class="col-sm-1"></div>
+          
+      </div>
+       
+         <script>
+         
+         $(document).ready(function(){
+         $('#myTable').DataTable();
+         });
+         
+         </script>
+      </body>
+</html>
