@@ -1,0 +1,75 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+ 
+class Products extends CI_Controller {
+
+        public function __construct(){
+           parent::__construct();
+           //load model
+           $this->load->model('Model_products');
+           $this->load->helper('form');
+        }
+	
+	public function index(){
+	$data['products']=$this->Model_products->all();
+        $this->load->view('backend/view_all_products', $data);
+        }
+          
+        public function create(){
+                // form validasi sebelum mengeksekusi Query Insert
+              
+                $this->load->library('form_validation');
+                $this->form_validation->set_rules('name', 'Product Name', 'required');
+		$this->form_validation->set_rules('description', 'Description', 'required');
+		$this->form_validation->set_rules('price', 'Product Price', 'required|integer');
+		$this->form_validation->set_rules('stock', 'Available stock', 'required|integer');
+
+		if ($this->form_validation->run() == FALSE)
+		{	
+                $this->load->view('backend/form_tambah_product');
+                } else {
+                $data_product= array(
+                'name' 		=> set_value('name'),
+                'description'   => set_value('description'),
+                'price'       	=> set_value('price'),
+                'stock'		=> set_value('stock')
+                );
+                $this->model_products->create($data_product);
+                redirect('Admin/products');
+                }
+        }
+      
+      public function Update($id){
+                
+              
+                $this->load->library('form_validation');
+                $this->form_validation->set_rules('name', 'Product Name', 'required');
+		$this->form_validation->set_rules('description', 'Description', 'required');
+		$this->form_validation->set_rules('price', 'Product Price', 'required|integer');
+		$this->form_validation->set_rules('stock', 'Available stock', 'required|integer');
+
+		if ($this->form_validation->run() == FALSE)
+		{
+		$this->load->model('Model_Products');	
+                $data['product']= $this->Model_products->temukan($id);
+                $this->load->view('backend/form_edit_product', $data);
+                
+                } else {
+                $data_product= array(
+                'name' 		=> set_value('name'),
+                'description'   => set_value('description'),
+                'price'       	=> set_value('price'),
+                'stock'		=> set_value('stock')
+                );
+                $this->Model_products->update($id, $data_product);
+                redirect('Admin/products');
+                }
+        
+        }
+        
+        public function delete ($id){
+           $this->model_products->delete($id);
+           redirect('Admin/products');
+        }
+}
+
+?>
